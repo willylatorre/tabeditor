@@ -18,7 +18,7 @@ const defaultStore = {
                 Hi there,
               </h2>
               <p>
-                this is a very <em>basic</em> example of tiptap.
+                this is a very <em>basic</em> example of content.
               </p>
               <pre><code>body { display: none; }</code></pre>
               <ul>

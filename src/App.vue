@@ -1,7 +1,11 @@
 <template>
-  <div id="app" style="height:100vh;width:100vw;">
+  <div id="app" class="w-full min-h-screen">
     <div class="p-4">
       <tab-editor />
+    </div>
+    <div id="credits" class="flex justify-center items-center">
+      <img src="@/assets/images/tabeditor.svg" alt="logo" style="height:40px" /> ·
+      <a href="https://github.com/willylatorre"> Github </a>
     </div>
   </div>
 </template>
@@ -31,6 +35,4 @@ textarea,
 *:focus {
   outline: none !important;
 }
-
-
 </style>

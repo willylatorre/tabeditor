@@ -1,10 +1,10 @@
 {
   "name": "TabEditor",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "manifest_version": 2,
   "permissions": ["storage"],
   "icons": {
-    "128": "img/icons/icon.png"
+    "128": "img/icon.png"
   },
   "chrome_url_overrides": {
     "newtab": "index.html"
