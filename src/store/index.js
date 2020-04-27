@@ -37,7 +37,6 @@ const defaultStore = {
   }
 }
 
-
 export default new Vuex.Store({
   // Waiting for PR https://github.com/robinvdvleuten/vuex-persistedstate/pull/160
   state: {

@@ -1,20 +1,17 @@
-import Vue from "vue";
-import App from "./App.vue";
-import VueTabs from "vue-nav-tabs";
-import store from "./store";
+import Vue from 'vue'
+import App from './App.vue'
+import VueTabs from 'vue-nav-tabs'
+import store from './store'
 
-// import "./registerServiceWorker";
+import 'modern-normalize/modern-normalize.css'
+import './assets/sass/main.scss'
+import './assets/css/tailwind.css'
 
-import "modern-normalize/modern-normalize.css";
+Vue.config.productionTip = false
 
-import "./assets/sass/main.scss";
-import "./assets/css/tailwind.css";
-
-Vue.config.productionTip = false;
-
-Vue.use(VueTabs);
+Vue.use(VueTabs)
 
 new Vue({
   store,
   render: h => h(App)
-}).$mount("#app");
+}).$mount('#app')

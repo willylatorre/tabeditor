@@ -104,7 +104,7 @@ export default {
   </div>
 </template>
 
-<style lang="scss" >
+<style lang="scss">
 .tabtab.nav-tabs {
   .nav-tabs-navigation {
     margin-bottom: 0;

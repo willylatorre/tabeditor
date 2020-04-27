@@ -4,7 +4,8 @@
       <tab-editor />
     </div>
     <div id="credits" class="flex justify-center items-center">
-      <img src="@/assets/images/tabeditor.svg" alt="logo" style="height:40px" /> ·
+      <img src="@/assets/images/tabeditor.svg" alt="logo" style="height:40px" />
+      ·
       <a href="https://github.com/willylatorre"> Github </a>
     </div>
   </div>
