@@ -1,6 +1,10 @@
 {
   "name": "TabEditor",
+  "description": "A beautiful tabbed rich-text editor for your 'new tab' page",
   "version": "0.1.0",
+  "author": "Adrian Latorre Crespo",
+  "homepage_url": "https://github.com/willylatorre/tabeditor",
+  "incognito": "not_allowed",
   "manifest_version": 2,
   "permissions": [
     "storage"
