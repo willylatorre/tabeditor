@@ -38,9 +38,8 @@ const defaultStore = {
 }
 
 export default new Vuex.Store({
-  // Waiting for PR https://github.com/robinvdvleuten/vuex-persistedstate/pull/160
   state: {
-    tabs: localStorage.getItem(STORAGE_KEY, false) ? {} : defaultStore
+    tabs: defaultStore
   },
   mutations: {
     SAVE_CONTENT(state, { uuid, content }) {
@@ -77,7 +76,8 @@ export default new Vuex.Store({
   modules: {},
   plugins: [
     createPersistedState({
-      key: STORAGE_KEY
+      key: STORAGE_KEY,
+      overwrite: true
     }),
     createMutationsSharer({
       predicate: ['SAVE_CONTENT', 'CREATE_TAB', 'REMOVE_TAB']
