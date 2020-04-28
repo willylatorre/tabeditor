@@ -36,7 +36,20 @@ export default {
   },
   data() {
     return {
-      editor: null
+      editor: null,
+      buttons: [
+        { name: 'bold', icon: 'bold' },
+        { name: 'italic', icon: 'italic' },
+        { name: 'strike', icon: 'strike' },
+        { name: 'underline', icon: 'underline' },
+        { name: 'code', icon: 'code' },
+        { name: 'paragraph', icon: 'paragraph' },
+        { name: 'bullet_list', icon: 'ul' },
+        { name: 'ordered_list', icon: 'ol' },
+        { name: 'blockquote', icon: 'quote' },
+        { name: 'horizontal_rule', icon: 'hr' },
+        { name: 'code_block', icon: 'code' }
+      ]
     }
   },
   watch: {
@@ -85,7 +98,7 @@ export default {
   methods: {
     handleNewContent: debounce(function(newContent) {
       this.$emit('content-update', newContent)
-    }, 5000)
+    }, 3000)
   },
   beforeDestroy() {
     this.editor.destroy()
@@ -99,50 +112,12 @@ export default {
       <div class="menubar">
         <button
           class="menubar__button"
-          :class="{ 'is-active': isActive.bold() }"
-          @click="commands.bold"
+          v-for="button in buttons"
+          :key="button"
+          :class="{ 'is-active': isActive[button.name]() }"
+          @click="commands[button.name]"
         >
-          <icon name="bold" />
-        </button>
-
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.italic() }"
-          @click="commands.italic"
-        >
-          <icon name="italic" />
-        </button>
-
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.strike() }"
-          @click="commands.strike"
-        >
-          <icon name="strike" />
-        </button>
-
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.underline() }"
-          @click="commands.underline"
-        >
-          <icon name="underline" />
-        </button>
-
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.code() }"
-          @click="commands.code"
-        >
-          <icon name="code" />
-        </button>
-
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.paragraph() }"
-          @click="commands.paragraph"
-        >
-          <icon name="paragraph" />
+          <icon :name="button.icon" />
         </button>
 
         <button
@@ -167,42 +142,6 @@ export default {
           @click="commands.heading({ level: 3 })"
         >
           H3
-        </button>
-
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.bullet_list() }"
-          @click="commands.bullet_list"
-        >
-          <icon name="ul" />
-        </button>
-
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.ordered_list() }"
-          @click="commands.ordered_list"
-        >
-          <icon name="ol" />
-        </button>
-
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.blockquote() }"
-          @click="commands.blockquote"
-        >
-          <icon name="quote" />
-        </button>
-
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.code_block() }"
-          @click="commands.code_block"
-        >
-          <icon name="code" />
-        </button>
-
-        <button class="menubar__button" @click="commands.horizontal_rule">
-          <icon name="hr" />
         </button>
 
         <button class="menubar__button" @click="commands.undo">
