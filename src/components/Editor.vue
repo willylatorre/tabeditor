@@ -98,10 +98,7 @@ export default {
   methods: {
     handleNewContent: debounce(function(newContent) {
       this.$emit('content-update', newContent)
-    }, 3000),
-    log(data) {
-      console.log(data)
-    }
+    }, 3000)
   },
   beforeDestroy() {
     this.editor.destroy()
