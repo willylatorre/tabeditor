@@ -98,7 +98,10 @@ export default {
   methods: {
     handleNewContent: debounce(function(newContent) {
       this.$emit('content-update', newContent)
-    }, 3000)
+    }, 3000),
+    log(data) {
+      console.log(data)
+    }
   },
   beforeDestroy() {
     this.editor.destroy()
@@ -113,9 +116,9 @@ export default {
         <button
           class="menubar__button"
           v-for="button in buttons"
-          :key="button"
+          :key="button.name"
           :class="{ 'is-active': isActive[button.name]() }"
-          @click="commands[button.name]"
+          @click="commands[button.name]()"
         >
           <icon :name="button.icon" />
         </button>
