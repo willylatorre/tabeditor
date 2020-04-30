@@ -17,7 +17,7 @@ tabeditor has a very simple purpose: use your **new** tab (cmd + t/ctrl + t) of 
 
 ## Extension install
 
-Download the extension from Google Chrome Web extensions
+Download the [Google Chrome extension](https://chrome.google.com/webstore/detail/tabeditor/pkibnlkcaddedalckanlbglaaifomljg)
 
 or
 
