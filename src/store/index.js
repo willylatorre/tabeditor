@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import createMutationsSharer from 'vuex-shared-mutations'
 import createPersistedState from 'vuex-persistedstate'
-import uuid from 'uuid'
+import { v4 } from 'uuid';
 import dayjs from 'dayjs'
 import { version } from '../../package.json'
 
@@ -58,7 +58,7 @@ export default new Vuex.Store({
     },
     createTab({ commit }) {
       let tab = {
-        uuid: uuid.v4(),
+        uuid: v4(),
         title: dayjs().format('DD-MM HH:mm'),
         content: ``
       }

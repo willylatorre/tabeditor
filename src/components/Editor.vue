@@ -37,19 +37,26 @@ export default {
   data() {
     return {
       editor: null,
-      buttons: [
-        { name: 'bold', icon: 'bold' },
-        { name: 'italic', icon: 'italic' },
-        { name: 'strike', icon: 'strike' },
-        { name: 'underline', icon: 'underline' },
-        { name: 'code', icon: 'code' },
-        { name: 'paragraph', icon: 'paragraph' },
-        { name: 'bullet_list', icon: 'ul' },
-        { name: 'ordered_list', icon: 'ol' },
-        { name: 'blockquote', icon: 'quote' },
-        { name: 'horizontal_rule', icon: 'hr' },
-        { name: 'code_block', icon: 'code' }
+    }
+  },
+  computed: {
+    buttons() {
+      return [
+        { name: 'bold', icon: `bold${this.isDark ? '-dark' : ''}` },
+        { name: 'italic', icon: `italic${this.isDark ? '-dark' : ''}` },
+        { name: 'strike', icon: `strike${this.isDark ? '-dark' : ''}` },
+        { name: 'underline', icon: `underline${this.isDark ? '-dark' : ''}` },
+        { name: 'code', icon: `code${this.isDark ? '-dark' : ''}` },
+        { name: 'paragraph', icon: `paragraph${this.isDark ? '-dark' : ''}` },
+        { name: 'bullet_list', icon: `ul${this.isDark ? '-dark' : ''}` },
+        { name: 'ordered_list', icon: `ol${this.isDark ? '-dark' : ''}` },
+        { name: 'blockquote', icon: `quote${this.isDark ? '-dark' : ''}` },
+        { name: 'horizontal_rule', icon: `hr${this.isDark ? '-dark' : ''}` },
+        { name: 'code_block', icon: `code${this.isDark ? '-dark' : ''}` }
       ]
+    },
+    isDark() {
+      return window?.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
     }
   },
   watch: {
@@ -121,7 +128,7 @@ export default {
         </button>
 
         <button
-          class="menubar__button"
+          class="menubar__button text-primary dark:text-primaryDark"
           :class="{ 'is-active': isActive.heading({ level: 1 }) }"
           @click="commands.heading({ level: 1 })"
         >
@@ -129,7 +136,7 @@ export default {
         </button>
 
         <button
-          class="menubar__button"
+          class="menubar__button text-primary dark:text-primaryDark"
           :class="{ 'is-active': isActive.heading({ level: 2 }) }"
           @click="commands.heading({ level: 2 })"
         >
@@ -137,7 +144,7 @@ export default {
         </button>
 
         <button
-          class="menubar__button"
+          class="menubar__button text-primary dark:text-primaryDark"
           :class="{ 'is-active': isActive.heading({ level: 3 }) }"
           @click="commands.heading({ level: 3 })"
         >
@@ -145,11 +152,11 @@ export default {
         </button>
 
         <button class="menubar__button" @click="commands.undo">
-          <icon name="undo" />
+          <icon :name="`undo${isDark ? '-dark': ''}`" />
         </button>
 
         <button class="menubar__button" @click="commands.redo">
-          <icon name="redo" />
+          <icon :name="`redo${isDark ? '-dark': ''}`" />
         </button>
       </div>
     </editor-menu-bar>

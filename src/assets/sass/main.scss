@@ -2,7 +2,7 @@
 
 
 /* purgecss start ignore */
-@import '~vue-nav-tabs/themes/vue-tabs.scss';
+// @import '~vue-nav-tabs/themes/vue-tabs.scss';
 /* purgecss end ignore */
 
 
@@ -31,8 +31,12 @@
 html {
   font-family: 'Inter';
   font-size: 18px;
-  color: $color-black;
+  color: $color-primary;
   line-height: 1.5;
+
+  @media (prefers-color-scheme: dark) {
+    color: $color-primaryDark;
+  }
 }
 
 body {

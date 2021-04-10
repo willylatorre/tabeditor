@@ -1,9 +1,9 @@
 <template>
-  <div id="app" class="w-full min-h-screen">
+  <div id="app" class="w-full min-h-screen bg-bg dark:bg-bgDark">
     <div class="p-4">
       <tab-editor />
     </div>
-    <div id="credits" class="flex justify-center items-center">
+    <div id="credits" class="flex justify-center items-center text-primary dark:text-primaryDark">
       <img src="@/assets/images/tabeditor.svg" alt="logo" style="height:40px" />
       ·
       <a href="https://github.com/willylatorre"> Github </a>
@@ -28,7 +28,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
 
 input:focus,
