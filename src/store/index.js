@@ -14,6 +14,7 @@ const defaultStore = {
   example: {
     uuid: 'example',
     title: 'Example Tab',
+    editTitle: false,
     content: `<h2>
                 Hi there,
               </h2>
@@ -50,7 +51,13 @@ export default new Vuex.Store({
     },
     REMOVE_TAB(state, uuid) {
       Vue.delete(state.tabs, uuid)
-    }
+    },
+    EDIT_TAB_TITLE_MODE(state, {uuid, isEdit}) {
+      Vue.set(state.tabs[uuid], 'editTitle', isEdit)
+    },
+    EDIT_TAB_TITLE(state, {uuid, name}) {
+      Vue.set(state.tabs[uuid], 'title', name)
+    },
   },
   actions: {
     saveContent({ commit }, { uuid, content }) {
@@ -60,13 +67,20 @@ export default new Vuex.Store({
       let tab = {
         uuid: v4(),
         title: dayjs().format('DD-MM HH:mm'),
-        content: ``
+        content: ``,
+        editTitle: false
       }
       commit('CREATE_TAB', tab)
       return tab
     },
     removeTab({ commit }, uuid) {
       commit('REMOVE_TAB', uuid)
+    },
+    editTabNameMode({ commit }, {uuid, isEdit}) {
+      commit('EDIT_TAB_TITLE_MODE', {uuid, isEdit})
+    },
+    editTabName({ commit }, {uuid, name}) {
+      commit('EDIT_TAB_TITLE', {uuid, name})
     }
   },
   getters: {

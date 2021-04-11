@@ -31,6 +31,16 @@ export default {
     this.focusLastTab()
   },
   methods: {
+    editTabNameMode(uuid, isEdit) {
+      this.$store.dispatch('editTabNameMode', { uuid, isEdit })
+    },
+    editTabName(uuid, $e) {
+      const name = $e.target.value
+      setTimeout(() => {
+        this.$store.dispatch('editTabName', { uuid, name })
+        this.editTabNameMode(uuid, false)
+      }, 20000)
+    },
     removeTab(uuid) {
       this.$store.dispatch('removeTab', uuid)
     },
@@ -66,6 +76,7 @@ export default {
         id="add-tab"
         @click="addTab"
         class="absolute flex items-center tab-title top-0 right-0"
+        style="max-width:120px;"
       >
         <img
           @click.stop="removeTab(tab.uuid)"
@@ -84,10 +95,8 @@ export default {
         :key="tab.uuid"
       >
         <div slot="title">
-          <div class="relative tab-title bg-bg text-primary dark:bg-bgDark dark:text-primaryDark">
-            <span class="mr-3">
-              {{ tab.title }}
-            </span>
+          <div class="relative tab-title bg-bg text-primary dark:bg-bgDark dark:text-primaryDark" @dblclick="editTabNameMode(tab.uuid, true)">
+            <input class="mr-3 tab-input" :readonly="!tab.editTitle" :value="tab.title" @input="($e) => editTabName(tab.uuid, $e)"  />
 
             <img
               @click.stop="removeTab(tab.uuid)"
@@ -138,10 +147,8 @@ export default {
 }
 
 .tab-title {
-  height: 40px;
-  flex: 0 0 150px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  height: 48px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -156,9 +163,17 @@ export default {
   }
 }
 
+
+.tab-input {
+  background: transparent;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 150px;
+}
+
 .tab-close {
-  top: 3px;
-  right: 3px;
+  top: 5px;
+  right: 5px;
 }
 .tab-close:hover {
   transform: rotate(7deg);
