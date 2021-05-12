@@ -15,7 +15,7 @@
     "dayjs": "^1.10.4",
     "debounce": "^1.2.1",
     "modern-normalize": "^1.0.0",
-    "postcss": "^7.0.35",
+    "postcss": "^8.2.10",
     "register-service-worker": "^1.7.2",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.0",
     "tiptap": "^1.32.2",
